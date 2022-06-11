@@ -10,4 +10,10 @@ def create_app():
     app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
     app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
+    from .views import views
+    from .auth import auth
+    
+    app.register_blueprint(views, url_prefix='/')
+    app.register_blueprint(auth, url_prefix='/')
+
     return app
