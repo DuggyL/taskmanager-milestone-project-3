@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css">
     {% block style %}
     {% endblock %}
-    <title>Printcentre Task Manager</title>
+    <title>{% block title %}Printcentre Task Manager{% endblock %}</title>
 </head>
 <body>
 
@@ -21,14 +21,11 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="#">Tasks</a></li>
-                {% if session.user %}
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">New Task</a></li>
                     <li><a href="/logout">Logout</a></li>
-                {% else %}
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Register</a></li>
-                {% endif %}
             </ul>
             </div>
         </nav>
@@ -37,14 +34,11 @@
         <ul class="sidenav" id="mobile-demo">
             <li><h4 class="center-align">Printcentre Task Manager</h4></li>
             <li><a href="#">Tasks</a></li>
-            {% if session.user %}
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">New Task</a></li>
                 <li><a href="/logout">Logout</a></li>
-            {% else %}
                 <li><a href="/login">Login</a></li>
                 <li><a href="/register">Register</a></li>
-            {% endif %}
         </ul>  
     </header>
 
