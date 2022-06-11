@@ -33,20 +33,15 @@ def register():
         password2 = request.form.get('password2')
 
         user = User.query.filter_by(username=username).first()
-
         if user:
             flash('Username or password already exist', category='error')
-        elif len(username) < 3:
-            flash('username must be greater than 3 characters.', category='error')
-        elif len(password1) < 6:
-            flash('password must be at least 6 characters.', category='error')
         elif password1 != password2:
             flash('Password do not match.', category='error')
         else:
             new_user = User(username=username, password=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
-            login_user(user, remember=True)
+            login_user(new_user, remember=True)
             flash('You are registered.', category='success')
             return redirect(url_for('views.home'))
 
