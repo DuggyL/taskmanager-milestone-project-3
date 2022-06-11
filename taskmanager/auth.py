@@ -7,18 +7,32 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
-    data = request.form
-    print(data)
+    if request.method == "POST": 
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        user = User.query.filter_by(username=username).first()
+        if user:
+            if check_password_hash(user.password, password):
+                flash('Logged in successfully!', category='success')
+            else:
+                flash('Incorrect username or password, try again.', category='error')
+        else:
+            flash('Username or password does not exist', category='error')
     return render_template("login.html")
 
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         username = request.form.get('username')
-        password1 = request.form.get('password1')
+        password1 = request.form.get('password1') 
         password2 = request.form.get('password2')
 
-        if len(username) < 3:
+        user = User.query.filter_by(username=username).first()
+
+        if user:
+            flash('Username or password already exist', category='error')
+        elif len(username) < 3:
             flash('username must be greater than 3 characters.', category='error')
         elif len(password1) < 6:
             flash('password must be at least 6 characters.', category='error')
