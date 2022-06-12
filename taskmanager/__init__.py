@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+from flask_pymongo import PyMongo
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
@@ -7,6 +8,7 @@ if os.path.exists("env.py"):
     import env 
 
 db = SQLAlchemy()
+mongo = PyMongo()
 DB_NAME = "database.db"
 
 def create_app():

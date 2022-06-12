@@ -4,43 +4,26 @@
 
 <h1 class="center">Home</h1>
 
+
+
 <div class="tasks-card row z-depth-1 blue-grey lighten-5">
     <div class="col s12">
       <div class="card-content">
         <ul class="collapsible expandable">
           <li>
-            <div class="collapsible-header light-blue white-text"><i class="material-icons">account_circle</i>Customer</div>
-            <div class="collapsible-body white">
-              <div class="row">
-                <div class="col s6">Customer Name:</div>
-                <div class="col s6">Company Name:</div>
-              </div>
-              <div class="row">
-                <div class="col s12">Address:</div>
-              </div>
-              <div class="row">
-                <div class="col s6">Order No:</div>
-                <div class="col s6">Job No:</div>
-              </div>
-            </div>
-          </li>
-          <li>
             <div class="collapsible-header pink white-text"><i class="material-icons">note</i>Work Instruction</div>
             <div class="collapsible-body white">
               <div class="row">
+                <div class="col s6">Company Name:</div>
                 <div class="col s6">Job Title:</div>
-                <div class="col s6">Quantity:</div>
-              </div>
-              <div class="row">
-                <div class="col s6">Size:</div>
-                <div class="col s6">Pages:</div>
               </div>
               <div class="row">
                 <div class="col s12">Job Description:</div>
               </div>
+              <br>
               <div class="row">
+                <div class="col s6">Quantity:</div>
                 <div class="col s6">Materials:</div>
-                <div class="col s6">Sheet Size:</div>
               </div>
               <div class="row">
                 <div class="col s6">Printing:</div>
@@ -49,10 +32,10 @@
             </div>
           </li>
           <li>
-            <div class="collapsible-header yellow"><i class="material-icons">local_shipping</i>Delivery</div>
+            <div class="collapsible-header blue white-text"><i class="material-icons">local_shipping</i>Delivery</div>
             <div class="collapsible-body white">
               <div class="row">
-                <div class="col s6">Delivery Method:</div>
+                <div class="col s6">Delivery:</div>
                 <div class="col s6">Delivery Date:</div>
               </div>
               <div class="row">
@@ -62,11 +45,100 @@
           </li>
         </ul>
       </div>
-      <!-- <div class="card-action center-align">
-        <a href="" class="btn-small green">Done</a>
-        <a href="" class="btn-small teal accent-4">Edit</a> 
-      </div> -->
     </div>
-</div> 
+</div>
+
+
+<div class="row card-panel">
+  <form class="col s12" method="POST">
+      <!-- Job title and job number -->
+      <div class="row">
+          <div class="input-field col s6">
+              <i class="material-icons prefix">account_circle</i>
+              <input id="job_title" name="job_title" minlength="5" maxlength="30" type="text" class="validate" required>
+              <label for="job_title">Company Name</label>
+          </div>
+          <div class="input-field col s6">
+              <i class="material-icons prefix">account_circle</i>
+              <input id="job_no" name="job_no" minlength="6" maxlength="6" pattern="^[0-9]{6,6}$" type="text" class="validate" required>
+              <label for="job_no">Job Title:</label>
+          </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s12">
+              <i class="material-icons prefix">phone</i>
+              <textarea id="job_description" name="job_description" class="materialize-textarea" minlength="5" maxlength="100" required></textarea>
+              <label for="job_description">Job Description</label>
+          </div>
+      </div>
+      <br>
+      <br>
+      <div class="row">
+        <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="job_title" name="job_title" minlength="5" maxlength="30" type="text" class="validate" required>
+            <label for="job_title">Quantity</label>
+        </div>
+        <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="job_no" name="job_no" minlength="6" maxlength="6" pattern="^[0-9]{6,6}$" type="text" class="validate" required>
+            <label for="job_no">Materials:</label>
+        </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="job_title" name="job_title" minlength="5" maxlength="30" type="text" class="validate" required>
+          <label for="job_title">Printing</label>
+      </div>
+      <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="job_no" name="job_no" minlength="6" maxlength="6" pattern="^[0-9]{6,6}$" type="text" class="validate" required>
+          <label for="job_no">Finishing:</label>
+      </div>
+    </div>
+    <br>
+      <!-- Delivery date and urgent switch -->
+    <div class="row">
+        <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="delivery_date" name="delivery_date" type="text" class="datepicker validate" required>
+            <label for="delivery_date">Delivery</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="delivery_date" name="delivery_date" type="text" class="datepicker validate" required>
+          <label for="delivery_date">Delivery Date</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+          <i class="material-icons prefix">phone</i>
+          <textarea id="job_description" name="job_description" class="materialize-textarea" minlength="5" maxlength="100" required></textarea>
+          <label for="job_description">Delivery Address</label>
+      </div>
+    </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <div class="switch">
+              <i class="material-icons prefix">priority_high</i>
+              <label for="urgent">
+                  <input type="checkbox" id="urgent" name="urgent">
+                  <span class="lever"></span>
+                  Urgent
+              </label>
+          </div>
+      </div>
+      </div>
+      <!-- Submit button -->
+      <div class="row">
+          <div class="col s12 center-align"> 
+              <button class="btn-large waves-effect waves-light" type="submit">Submit
+                  <i class="material-icons right">send</i>
+              </button>
+          </div>
+      </div>
+  </form>
+</div>
 
 {% endblock %}

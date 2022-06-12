@@ -21,9 +21,8 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 {% if user.is_authenticated %}
-                    <li><a href="#">Tasks</a></li>
+                    <li><a href="/tasks">Tasks</a></li>
                     <li><a href="#">Add Task</a></li>
-                    <li><a href="#">Profile</a></li>
                     <li><a href="/logout">Logout</a></li>
                 {% else %}
                     <li><a href="/login">Login</a></li>
@@ -36,9 +35,8 @@
         <!-- Mobile Navbar -->
         <ul class="sidenav" id="mobile-demo">
             {% if user.is_authenticated %}
-                <li><a href="#">Tasks</a></li>
+                <li><a href="/tasks">Tasks</a></li>
                 <li><a href="#">Add Task</a></li>
-                <li><a href="#">Profile</a></li>
                 <li><a href="/logout">Logout</a></li>
             {% else %}
                 <li><a href="/login">Login</a></li>

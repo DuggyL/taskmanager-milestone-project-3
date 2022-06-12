@@ -1,10 +1,25 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+import os
+from flask import Blueprint, Flask, render_template, request, flash, redirect, url_for
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__)
+
+app = Flask(__name__)
+
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.secret_key = os.environ.get("SECRET_KEY")
+
+mongo = PyMongo(app)
+
+def get_tasks():
+    tasks = mongo.db.tasks.find()
+    return render_template("tasks.html", tasks=tasks)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():

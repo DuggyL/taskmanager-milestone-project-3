@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Add Task{% endblock %}
+{% block content %}
+
+<h1 class="center">Add Task</h1>
+
+<div class="row card-panel">
+    <form class="col s12" method="POST">
+        <!-- Departments selection -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">Customer</i>
+                <select id="department_name" name="department_name" class="validate" required>
+                    <option value="" disabled selected>Choose Department</option>
+                        <option value=""></option>
+                </select>
+                <label for="company_name">Company Name</label>
+            </div>
+        </div>
+        <!-- Job title and job number -->
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="job_title" name="job_title" minlength="5" maxlength="30" type="text" class="validate" required>
+                <label for="job_title">Job Title</label>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="job_no" name="job_no" minlength="6" maxlength="6" pattern="^[0-9]{6,6}$" type="text" class="validate" required>
+                <label for="job_no">Job No</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">phone</i>
+                <textarea id="job_description" name="job_description" class="materialize-textarea" minlength="5" maxlength="100" required></textarea>
+                <label for="job_description">Job Description</label>
+            </div>
+        </div>
+        <!-- Delivery date and urgent switch -->
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="delivery_date" name="delivery_date" type="text" class="datepicker validate" required>
+                <label for="delivery_date">Delivery Date</label>
+            </div>
+            <div class="input-field col s6">
+                <div class="switch">
+                    <i class="material-icons prefix">priority_high</i>
+                    <label for="urgent">
+                        <input type="checkbox" id="urgent" name="urgent">
+                        <span class="lever"></span>
+                        Urgent
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- Submit button -->
+        <div class="row">
+            <div class="col s12 center-align"> 
+                <button class="btn-large waves-effect waves-light" type="submit">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
